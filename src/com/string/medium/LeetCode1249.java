@@ -8,7 +8,7 @@ package com.string.medium;
 public class LeetCode1249 {
 
     public String minRemoveToMakeValid(String s) {
-
+        return null;
     }
 
     public static void main(String[] args) {
