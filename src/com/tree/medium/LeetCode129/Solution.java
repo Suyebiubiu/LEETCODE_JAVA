@@ -1,5 +1,8 @@
 package com.tree.medium.LeetCode129;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author GMT
  * @version 1.0
@@ -44,7 +47,6 @@ public class Solution {
      * 空间复杂度：O(n)，其中 n 是二叉树的节点个数。
      * 空间复杂度主要取决于递归调用的栈空间，递归栈的深度等于二叉树的高度，最坏情况下，二叉树的高度等于节点个数，
      *
-     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      * 首先定义一个sum为0，遍历从根结点开始计算dfs(root,sum)
      * 当根节点为空返回，否则，将之前和*10加上现在节点的值，赋值给sum变量
      * 当左右为空时候，返回sum，否则返回dfs(left,sum)+dfs(right,sum)
@@ -68,18 +70,40 @@ public class Solution {
     /**
      * 方法二：
      * 使用广度优先遍历
+     * 执行用时：1 ms, 在所有 Java 提交中击败了31.18%的用户
+     * 内存消耗：36.5 MB, 在所有 Java 提交中击败了70.85%的用户
+     *
+     * 使用java中队列 linkedlist的父类是queue队列
+     * Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
+     * 用到了里面的offer和poll方法
      */
     public int sumNumbers2(TreeNode root) {
-        return bfs(root, 0);
-    }
-
-    private int bfs(TreeNode node, int preSum) {
-        if (node == null) {
-            return 0;
+        if (root == null) return 0;
+        int sum = 0;
+        Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
+        Queue<Integer> numQueue = new LinkedList<Integer>();
+        nodeQueue.offer(root);
+        numQueue.offer(root.val);
+        while (!nodeQueue.isEmpty()) {
+            TreeNode node = nodeQueue.poll();
+            int num = numQueue.poll();
+            TreeNode left = node.left;
+            TreeNode right = node.right;
+            if (left == null && right == null) sum += num;
+            else {
+                if (left != null) {
+                    nodeQueue.offer(left);
+                    numQueue.offer(num * 10 + left.val);
+                }
+                if (right != null) {
+                    nodeQueue.offer(right);
+                    numQueue.offer(num * 10 + right.val);
+                }
+            }
         }
-
-
+        return sum;
     }
+
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
