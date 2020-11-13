@@ -12,4 +12,5 @@
 **方法二：** 使用广度优先遍历
 
 使用java中队列 linkedlist的父类是queue队列：Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();用到了里面的offer和poll方法
-### 2020.10.30 leetcode
+### 2020.11.13 剑指offer02 单例模式
+单例模式，写了7种实现方式
