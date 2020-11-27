@@ -48,3 +48,18 @@
 **case1：** 使用Stack的先进后出的特点
 
 **case2：** 使用递归的方式，本质上还是个栈
+
+另外，链表的类：
+```
+    public class ListNode {
+        public ListNode next;
+        public int val;
+ 
+        public ListNode(int val) {
+            this.val = val;
+     }
+    } 
+```
+### 2020.
+
+
