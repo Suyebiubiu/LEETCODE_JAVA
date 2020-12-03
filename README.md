@@ -51,6 +51,7 @@
 
 另外，链表的类：
 ```
+    //链表数据结构
     public class ListNode {
         public ListNode next;
         public int val;
@@ -60,6 +61,32 @@
      }
     } 
 ```
-### 2020.
+### 2020.12.1 剑指offer06 根据前序遍历和中序遍历结果，重建二叉树
+前序遍历：根左右；
+
+中序遍历：左根右；
+
+后序遍历：左右根；
+
+**二叉树相关知识点**：前中后序遍历的递归和循环实现共6种，层次遍历（宽度优先遍历），二叉搜索树，堆（最大堆+最小堆），红黑树
+```
+//二叉树数据结构
+public class TreeNode {
+     public int val;
+     public TreeNode left;
+     public TreeNode right;
+ 
+     public TreeNode(int x) {
+         this.val = x;
+     }
+ }
+```
+**题目总结：**
+
+
+
+
+
+
 
 
