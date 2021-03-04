@@ -1,7 +1,5 @@
 package cn.swordOffer.num01;
 
-import java.util.Arrays;
-
 /**
  * @author GONG
  * @version 1.0
@@ -16,7 +14,7 @@ public class FindDuplicateElementsByBinarySearch {
         // 判空
         int len = nums.length;
         if (len <= 0) return -1;
-
+        
         // 使用二分法
         int start = 0;
         int end = len - 1;

@@ -2,8 +2,6 @@ package cn.swordOffer.num06;
 
 import cn.swordOffer.util.TreeNode;
 
-import java.util.Arrays;
-
 /**
  * @author GONG
  * @version 1.0
@@ -18,9 +16,9 @@ public class ErgodicTree {
     private static void preErgodicByRecursion(TreeNode root) {
         // 判空
         if (root == null) return;
-        System.out.print(root.value + " ");
-        preErgodicByRecursion(root.leftNode);
-        preErgodicByRecursion(root.rightNode);
+        System.out.print(root.val + " ");
+        preErgodicByRecursion(root.left);
+        preErgodicByRecursion(root.right);
     }
 
     /**
@@ -45,13 +43,13 @@ public class ErgodicTree {
         TreeNode node7 = new TreeNode(6);
         TreeNode node8 = new TreeNode(8);
 
-        node1.leftNode = node2;
-        node1.rightNode = node5;
-        node2.leftNode = node3;
-        node3.rightNode = node4;
-        node5.leftNode = node6;
-        node5.rightNode = node7;
-        node7.leftNode = node8;
+        node1.left = node2;
+        node1.right = node5;
+        node2.left = node3;
+        node3.right = node4;
+        node5.left = node6;
+        node5.right = node7;
+        node7.left = node8;
 
         // 1-1. 前序遍历(递归实现)
         preErgodicByRecursion(node1);//递归实现

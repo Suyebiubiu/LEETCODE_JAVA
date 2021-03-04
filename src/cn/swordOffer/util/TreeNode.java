@@ -1,11 +1,11 @@
 package cn.swordOffer.util;
 
 public class TreeNode {
-    public int value;
-    public TreeNode leftNode;
-    public TreeNode rightNode;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
     public TreeNode(int value) {
-        this.value = value;
+        this.val = value;
     }
 }

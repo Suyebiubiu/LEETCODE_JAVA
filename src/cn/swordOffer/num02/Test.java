@@ -7,6 +7,7 @@ package cn.swordOffer.num02;
  */
 public class Test {
     public static void main(String[] args) {
+
         System.out.println("方法一：饿汉式：直接实例化一个对象");
         HugerSingleTon1 instance1 = HugerSingleTon1.getInstance();
         HugerSingleTon1 instance2 = HugerSingleTon1.getInstance();

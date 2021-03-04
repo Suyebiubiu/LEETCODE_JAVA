@@ -28,7 +28,7 @@ public class PrintLinkList {
     /**
      * 解法一：利用栈输出
      */
-    private static ArrayList<Integer> printListReverse1(ListNode node1) {
+    private static int[] printListReverse1(ListNode node1) {
         // 判空
         if (node1 == null) return null;
         // 创建一个list集合，用来存储最后的结果
@@ -47,7 +47,7 @@ public class PrintLinkList {
             ListNode node = stack.pop();
             final_list.add(node.val);
         }
-        return final_list;
+        return final_list.stream().mapToInt(Integer::intValue).toArray();
     }
 
     /**
@@ -56,6 +56,7 @@ public class PrintLinkList {
     private static ArrayList<Integer> printListReverse2(ListNode node1) {
         // 判空
         if (node1 == null) return null;
+
         // 创建一个list集合，用来存放数据
         ArrayList<Integer> final_list = new ArrayList<>();
         ListNode headNode = node1;
@@ -63,6 +64,7 @@ public class PrintLinkList {
             final_list = printListReverse2(headNode.next);
         }
         final_list.add(headNode.val);
+
         return final_list;
     }
 }

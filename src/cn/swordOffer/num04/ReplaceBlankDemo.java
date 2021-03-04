@@ -46,6 +46,7 @@ public class ReplaceBlankDemo {
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == ' ') ++blankCount;
         }
+
         // 创建一个新的string，利用char[]创建，方便从后往前插入
         int newStringLen = input.length() + blankCount * 2;
         char[] newString = new char[newStringLen];
