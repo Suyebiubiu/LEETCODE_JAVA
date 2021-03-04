@@ -1,4 +1,4 @@
-package cn.swordOffer.num06;
+package cn.swordOffer.num07;
 
 import cn.swordOffer.util.TreeNode;
 

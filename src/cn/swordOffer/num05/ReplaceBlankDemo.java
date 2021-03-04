@@ -1,4 +1,4 @@
-package cn.swordOffer.num04;
+package cn.swordOffer.num05;
 
 /**
  * @author GONG
