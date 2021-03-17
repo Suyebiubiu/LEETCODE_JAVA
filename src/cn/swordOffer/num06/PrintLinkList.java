@@ -21,33 +21,29 @@ public class PrintLinkList {
         ListNode node3 = new ListNode(9);
         node1.next = node2;
         node2.next = node3;
-        System.out.println("解法一：利用栈输出，反转后：" + PrintLinkList.printListReverse1(node1));
+        System.out.println("解法一：利用栈输出，反转后：" + new PrintLinkList().reversePrint(node1));
         System.out.println("解法二：递归，反转后：" + PrintLinkList.printListReverse2(node1));
     }
 
     /**
      * 解法一：利用栈输出
      */
-    private static int[] printListReverse1(ListNode node1) {
-        // 判空
-        if (node1 == null) return null;
-        // 创建一个list集合，用来存储最后的结果
-        ArrayList<Integer> final_list = new ArrayList<>();
-        // 创建一个栈，用来存放节点
-        Stack<ListNode> stack = new Stack<>();
-
-        // 将节点按照顺序放在栈中
-        ListNode headNode = node1;
-        while (headNode != null) {
-            stack.push(headNode);//添加节点
-            headNode = headNode.next;
+    public int[] reversePrint(ListNode head) {
+        //用栈实现逆序输出
+        if (head == null) return new int[0];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(head.val);
+        while (head.next != null) {
+            stack.push(head.next.val);
+            head = head.next;
         }
-        // 通过栈的先进后出的特点，逆序将数据放到list集合中
-        while (!stack.empty()) {
-            ListNode node = stack.pop();
-            final_list.add(node.val);
+        int[] ans = new int[stack.size()];
+        while (!stack.isEmpty()) {
+            for (int i = 0; i < ans.length; i++) {
+                ans[i] = stack.pop();
+            }
         }
-        return final_list.stream().mapToInt(Integer::intValue).toArray();
+        return ans;
     }
 
     /**

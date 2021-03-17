@@ -7,6 +7,13 @@ package cn.swordOffer.num05;
  */
 public class ReplaceBlankDemo {
     /**
+     * 最简单解法：直接用String的replaceAll方法解决问题
+     */
+    public String replaceSpace(String s) {
+        return s.replaceAll(" ", "%20");
+    }
+
+    /**
      * 解法一：使用StringBuffer
      */
     public static String replaceBlank01(String input) {

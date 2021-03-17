@@ -1,5 +1,7 @@
 package cn.swordOffer.num03;
 
+import java.util.jar.JarEntry;
+
 /**
  * @author GONG
  * @version 1.0
@@ -11,7 +13,7 @@ package cn.swordOffer.num03;
  */
 public class FindDuplicateElementsByIndex {
 
-    public int getDuplicate(int[] nums) {
+    public int findRepeatNumber(int[] nums) {
         int res = -1;
         int len = nums.length;
         // 判空
@@ -24,23 +26,27 @@ public class FindDuplicateElementsByIndex {
             while (nums[i] != i) {
                 // 如果相同表示，出现了重复数字
                 if (nums[i] == nums[nums[i]])
+                    //这个地方一定要return 出去，不然会报错：超出时间限制
                     return nums[i];
-                // 如果不相同，交换两个位置，交换之后，有个位置 nums[i]=i
-                // 注意交换的顺序，如果temp = num[i]是不可以的
-                int temp = nums[nums[i]];
-                nums[nums[i]] = nums[i];
-                nums[i] = temp;
+                    // 如果不相同，交换两个位置，交换之后，有个位置 nums[i]=i
+                else
+                    swap(nums, i, nums[i]);
             }
-//            System.out.println(i + "=========" + Arrays.toString(nums));
         }
         return res;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
 
     public static void main(String[] args) {
         FindDuplicateElementsByIndex f = new FindDuplicateElementsByIndex();
         int nums[] = {2, 3, 1, 1, 0, 5, 4};
-        int ans = f.getDuplicate(nums);
+        int ans = f.findRepeatNumber(nums);
         System.out.println((ans == -1) ? "没有重复数字" : "其中重复数字是" + ans);
     }
 }

@@ -24,38 +24,23 @@ public class FindInVec {
         System.out.println(b == true ? "找到了" : "没有找到");
     }
 
+
     /*
      * 解法一：
      * 从右上角入手，小了往下找，大了往左找，相等直接返回（同理可以从左下角入手）
      * 这个方法叫做双指针法，行列两个指针
      * 时间复杂度是O(mn)，空间复杂度是O(1)
      * */
-    private boolean getFindInVec(int[][] arr, int num) {
-        // 判空条件
-        if (arr != null && arr.length == 0) return false;
+    private boolean getFindInVec(int[][] matrix, int target) {
+        if (matrix.length <= 0) return false;
 
-        int rows = arr.length;//行数
-        int columns = arr[0].length;//列数
-
-        boolean find = false;// 用来记录是否找到了该数字，找到了即为true
-
-        if (rows > 0 && columns > 0) {
-            // 定位到右上角
-            int row = 0;
-            int column = columns - 1;
-            while (row < rows && column >= 0) {//因为行在增加（下移），列在减小（左移）
-
-                // 如果在右上角找到了
-                if (arr[row][column] == num) {
-                    find = true;
-                    break;
-                } else if (arr[row][column] > num) {//如果右上角的数字大于我们要查找的数字
-                    --column;
-                } else {//如果右上角的数字小于我们要查找的数字
-                    ++row;
-                }
-            }
+        int i = 0, j = matrix[0].length - 1;
+        while (i < matrix.length && j >= 0) {
+            if (matrix[i][j] == target)
+                return true;
+            if (matrix[i][j] < target) ++i;
+            else --j;
         }
-        return find;
+        return false;
     }
 }
