@@ -1,5 +1,9 @@
 package cn.swordOffer.num11;
 
+import com.sun.corba.se.impl.oa.NullServantImpl;
+
+import java.awt.font.NumericShaper;
+
 /**
  * @author GONG
  * @version 1.0
@@ -36,7 +40,7 @@ public class RoArrayMinValue {
 
     /**
      * 二分查找，因为是两段有序数组
-     * 二分查找要求：顺序存储、元素有序
+     * * 二分查找要求：顺序存储、元素有序
      */
     public int minArray(int[] numbers) {
         int low = 0, high = numbers.length - 1;
@@ -56,6 +60,86 @@ public class RoArrayMinValue {
 
     public static void main(String[] args) {
         int[] arr = {3, 4, 5, 1, 2};
-        System.out.println(new RoArrayMinValue().minArray(arr));
+//        System.out.println(new RoArrayMinValue().minArray2(arr, 4));
+//        System.out.println(new RoArrayMinValue().minArray3(arr));
+        System.out.println(new RoArrayMinValue().minArrayGuanFang(arr));
     }
+
+    private int minArrayGuanFang(int[] numbers) {
+        int low = 0;
+        int high = numbers.length - 1;
+        while (low < high) {
+            int pivot = low + (high - low) / 2;
+            if (numbers[pivot] < numbers[high]) {
+                high = pivot;
+            } else if (numbers[pivot] > numbers[high]) {
+                low = pivot + 1;
+            } else {
+                high -= 1;
+            }
+        }
+        return numbers[low];
+    }
+
+    /*
+     * 二分查找模板
+     * */
+    public int minArray2(int[] numbers, int target) {
+        int ans = -1;
+        int low = 0, high = numbers.length - 1;
+        while (low <= high) {
+            int mid = (low + high) >> 1;
+            if (numbers[mid] > target) {
+                high = mid - 1;
+            } else if (numbers[mid] < target) {
+                low = mid + 1;
+            } else {
+                ans = mid;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    public int minArray3(int[] numbers) {
+        if (numbers.length == 1) {// 1
+            return numbers[0];
+        }
+        int low = 0, high = numbers.length - 1;
+        int ans = -1;
+        if (numbers[low] < numbers[high]) {//1 2 3 4 5
+            ans = numbers[low];
+        }
+
+        while (numbers[low] >= numbers[high]) {//3 4 5 1 2
+            int mid = (low + high) >> 1;
+            if (high - low == 1) {//5 1
+                ans = numbers[high];
+                return ans;
+            }
+            if (numbers[low] == numbers[mid] && numbers[high] == numbers[mid]) {//1 0 1 1 1
+                ans = Inorder(numbers);
+                return ans;
+            }
+            if (numbers[mid] <= numbers[high])//5 0 1 2 3 4
+                high = mid;
+            else if (numbers[mid] >= numbers[low]) {//3 4 5 6 1 2
+                low = mid;
+            }
+
+        }
+
+        return ans;
+    }
+
+    private int Inorder(int[] numbers) {
+        int minValue = numbers[0];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] < minValue)
+                minValue = numbers[i];
+        }
+        return minValue;
+    }
+
+
 }

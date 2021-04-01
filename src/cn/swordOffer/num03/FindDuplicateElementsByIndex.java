@@ -21,7 +21,6 @@ public class FindDuplicateElementsByIndex {
         for (int i = 0; i < len; i++) {
             //有[0, n-1]范围外的数据
             if (nums[i] < 0 || nums[i] > len - 1) return -1;
-
             // 如果数组下标不等于数据中的值
             while (nums[i] != i) {
                 // 如果相同表示，出现了重复数字

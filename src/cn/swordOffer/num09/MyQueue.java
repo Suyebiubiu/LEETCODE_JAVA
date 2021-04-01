@@ -7,12 +7,12 @@ import java.util.Stack;
  * @version 1.0
  * @date 2021/3/8 19:40
  */
-public class CQueue {
+public class MyQueue {
     //两个栈，一个出栈，一个入栈
     private Stack<Integer> stackIn;
     private Stack<Integer> stackOut;
 
-    public CQueue() {
+    public MyQueue() {
         stackIn = new Stack<>();
         stackOut = new Stack<>();
     }

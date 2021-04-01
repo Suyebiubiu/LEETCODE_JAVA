@@ -1,5 +1,6 @@
 package cn.swordOffer.num07;
 
+
 import cn.swordOffer.util.TreeNode;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class RebuildBinaryTree {
         //前序遍历 3 9 20 15 7
         myPreOrder(root);
         //前序遍历，非递归实现
-        myPreOrderByStack(root);
+//        myPreOrderByStack(root);
 
     }
 
@@ -76,14 +77,12 @@ public class RebuildBinaryTree {
         TreeNode root = new TreeNode(preorder[0]);
         //这个二叉树长度
         int len = preorder.length;
-
         int rootVal = root.val;
         int i;//用i表示中序遍历中根节点的位置
         for (i = 0; i < len; i++) {
             if (inorder[i] == rootVal)
                 break;
         }
-
         //创建左子树
         if (i > 0) {//i=1
             int[] pr = new int[i];
@@ -96,7 +95,6 @@ public class RebuildBinaryTree {
         } else {
             root.left = null;
         }
-
         //创建右子树
         if (len - i - 1 > 0) {
             int[] pr = new int[len - i - 1];
