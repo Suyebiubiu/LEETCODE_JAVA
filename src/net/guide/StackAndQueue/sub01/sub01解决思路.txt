@@ -1,0 +1,55 @@
+设计一个有getMin功能的栈
+【题目：】
+实现一个特殊的栈，在基本功能（push，pop）上，实现返回栈的最小元素的操作
+【要求：】
+pop，push，getMin时间复杂度为O(1),可以使用现成的栈结构
+
+【解决思路：双栈】
+【设计方案一：】
+（1）push
+先将其压入stackData栈，
+判断stackMin是否为空，空直接压入，非空继续往下判断：
+    判断当前push的值是否小于等于stackMin栈顶元素（getMin可以获取），
+        如果小于等于stackMin栈顶元素，压入stackMin，
+        如果大于，不压入stackMin
+（2）pop
+首先判断stackData是否为空，空报异常，非空继续
+    弹出stackData栈顶元素value，判断value与stackMin栈顶元素大小关系
+        相等，弹出stackMin栈顶元素
+    返回value
+（3）getMin
+首先判断stackMin是否为空
+    空报异常
+    非空返回stackMin.peek();
+
+
+【设计方案二：】
+（1）push
+先将其压入stackData栈，
+判断stackMin是否为空，空直接压入，非空继续往下判断：
+    判断当前push的值是否小于等于stackMin栈顶元素（getMin可以获取），
+        如果小于等于stackMin栈顶元素，压入stackMin，
+        如果大于，将stackMin的栈顶元素重复压入一次
+（2）pop
+首先判断stackData是否为空，
+    空报异常
+    非空，弹出stackData栈顶元素value，同时弹出stackMin栈顶元素
+    返回value
+（3）getMin
+首先判断stackMin是否为空
+    空报异常
+    非空返回stackMin.peek();
+【点评】
+方法一二，时间复杂度都为O(1)，空间复杂度都为O(N);
+    方案一：push省空间，pop费时间
+    方案二：push费空间，pop省时间
+补充：
+Stack常用方法：
+    push( num) //入栈
+    pop() //栈顶元素出栈
+    empty() //判定栈是否为空
+    isEmpty() //判断栈是否为空
+    peek() //获取栈顶元素，不弹出
+    search(num) //判端元素num是否在栈中，如果在返回索引，不在返回-1。
+    get(index) //返回第几个值，从0开始，从栈底开始
+    size() //返回栈的大小
