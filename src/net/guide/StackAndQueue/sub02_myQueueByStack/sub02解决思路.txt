@@ -1,0 +1,16 @@
+用两个栈组成一个队列
+【题目：】
+用两个栈组成一个队列，实现基本的offer，poll，peek功能
+【要求：】
+
+【解决思路：双栈】
+必须做到以下两点：
+（1）如果stackIn往stackOut里面添加数据，必须一次性全部加入
+（2）如果stackOut不为空的话，stackIn不能往stackOut里面添加数据
+补充：
+Queue常用方法：
+    Queue<Integer> queue = new LinkedList<>();//创建一个队列
+
+    Offer 尾部添加元素  add异常
+    Poll 弹出头部元素  remove异常
+    Peek 返回第一个元素（不删除），element异常
