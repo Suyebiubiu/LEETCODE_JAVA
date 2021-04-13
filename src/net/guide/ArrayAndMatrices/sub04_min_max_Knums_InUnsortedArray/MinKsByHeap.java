@@ -1,4 +1,4 @@
-package net.guide.ArrayAndMatrices.sub04_min_max_Kth_InUnsortedArray;
+package net.guide.ArrayAndMatrices.sub04_min_max_Knums_InUnsortedArray;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 直接排序O(NlogN)。
  * 本题要求实现时间复杂度为 O(Nlogk)和 O(N)的方法。
  */
-public class MinKInUnsortedArrayByHeap {
+public class MinKsByHeap {
     public static void main(String[] args) {
         int[] arr = {2, 2, 6, 12, 9, 3, 1};
         getMinKNumsByHeap(arr, 3);
@@ -54,25 +54,30 @@ public class MinKInUnsortedArrayByHeap {
         }
     }
 
+    /**
+     * index是待维护的节点
+     */
     private static void heapify(int[] arr, int index, int heapSize) {
-        int left = index * 2 + 1;
-        int right = index * 2 + 2;
+        int lson = index * 2 + 1;
+        int rson = index * 2 + 2;
         int largest = index;
-        while (left < heapSize) {
-            if (arr[left] > arr[index]) {
-                largest = left;
+        while (lson < heapSize) {
+            if (arr[lson] > arr[index]) {
+                largest = lson;
             }
-            if (right < heapSize && arr[right] > arr[largest]) {
-                largest = right;
+            if (rson < heapSize && arr[rson] > arr[largest]) {
+                largest = rson;
             }
+            //largest发生了交换，i不是最大
             if (largest != index) {
                 swap(arr, largest, index);
             } else {
                 break;
             }
+            //此时largest代表了那个交换的节点的下标
             index = largest;
-            left = index * 2 + 1;
-            right = index * 2 + 2;
+            lson = index * 2 + 1;
+            rson = index * 2 + 2;
         }
     }
 

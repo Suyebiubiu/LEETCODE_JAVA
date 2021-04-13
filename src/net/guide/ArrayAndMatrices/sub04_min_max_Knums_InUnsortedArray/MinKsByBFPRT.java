@@ -1,4 +1,4 @@
-package net.guide.ArrayAndMatrices.sub04_min_max_Kth_InUnsortedArray;
+package net.guide.ArrayAndMatrices.sub04_min_max_Knums_InUnsortedArray;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 直接排序O(NlogN)。
  * 本题要求实现时间复杂度为 O(Nlogk)和 O(N)的方法。
  */
-public class MinKInUnsortedArrayByBFPRT {
+public class MinKsByBFPRT {
     public static void main(String[] args) {
         int[] arr = {2, 2, 6, 12, 9, 3, 1};
         System.out.println(Arrays.toString(getMinKNumsByBFPRT(arr, 3)));;
